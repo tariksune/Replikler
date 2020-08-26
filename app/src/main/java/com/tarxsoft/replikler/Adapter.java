@@ -1,9 +1,14 @@
 package com.tarxsoft.replikler;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,11 +28,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     LayoutInflater layoutInflater;
     List<Quote> quotes;
+    Context context;
 
 
     public Adapter(Context context,List<Quote> quotes){
         this.layoutInflater = LayoutInflater.from(context);
         this.quotes = quotes;
+        this.context = context;
     }
 
 
@@ -38,7 +46,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.quoteText.setText(quotes.get(position).getQuoteText());
         holder.quoteName.setText(quotes.get(position).getQuoteName());
         holder.quoteRelativeLayout.setOnClickListener(new View.OnClickListener() {
@@ -60,17 +68,26 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         });
         holder.quoteRelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public boolean onLongClick(View v)  {
-
+            public boolean onLongClick(final View v)  {
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getRootView().getContext());
                 builder.setTitle("Ne yapmak istiyorsun?");
 
                 String[] options = {"İndir", "Paylaş"};
                 builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case 0:
+                                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(quotes.get(position).getQuoteLink()));
+                                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
+                                request.setTitle(quotes.get(position).getQuoteText());
+                                request.setDescription(quotes.get(position).getQuoteName());
+                                request.allowScanningByMediaScanner();
+                                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,""+ System.currentTimeMillis());
+                                DownloadManager manager = (DownloadManager) v.getRootView().getContext().getSystemService(Context.DOWNLOAD_SERVICE);
+                                manager.enqueue(request);
                             case 1:
                         }
                     }
@@ -102,5 +119,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             quoteLink = itemView.findViewById(R.id.quoteLink);
             quoteRelativeLayout = itemView.findViewById(R.id.quoteRelativeLayout);
         }
+    }
+
+    private void beginDownload(){
+
+
     }
 }
