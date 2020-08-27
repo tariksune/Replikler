@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20sp"
+    android:gravity="center"
+    android:background="@drawable/connection_bg">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_no_connection"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hay Aksi!"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppinsmedium"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="İntenet bağlantısını kontrol ediniz."
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppinsmedium"
+        android:textSize="15sp"
+        android:textStyle="normal"/>
+
+    <Button
+        android:id="@+id/connectionAgainButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bağlanmayı Dene"
+        android:background="@drawable/connection_button_bg"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppinsmedium"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        android:textAllCaps="false"
+        android:padding="10sp"
+        android:layout_marginTop="20sp"/>
+
+
+</LinearLayout>
