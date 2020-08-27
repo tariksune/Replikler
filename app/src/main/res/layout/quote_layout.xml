@@ -25,7 +25,7 @@
             android:fontFamily="@font/poppinsmedium"
             android:text="Drug Name Title"
             android:textColor="#FFFFFF"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:gravity="center"
             android:lines="3"
             android:ellipsize="end"
@@ -37,14 +37,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/quoteText"
             android:fontFamily="@font/poppinsmedium"
-            android:lineSpacingExtra="8sp"
+            android:lineSpacingExtra="4sp"
             android:text="Lorem"
             android:textColor="#FF9100"
-            android:textSize="10sp"
+            android:textSize="7sp"
             android:gravity="right"
             android:lines="1"
             android:ellipsize="end"
-            android:textStyle="italic" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/quoteLink"
