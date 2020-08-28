@@ -1,12 +1,10 @@
 package com.tarxsoft.replikler;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
@@ -14,23 +12,15 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.NetworkRequest;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.GridLayout;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -148,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void webStatus(){
-        if (isNetworkConnected() == false){
+        if (!isNetworkConnected()){
             Dialog dialog = new Dialog(this);
             dialog.setContentView(R.layout.connection_layout);
             dialog.setCanceledOnTouchOutside(false);
@@ -164,7 +154,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
             dialog.show();
-        }else{
         }
     }
 }

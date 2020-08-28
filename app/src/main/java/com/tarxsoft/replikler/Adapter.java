@@ -8,13 +8,12 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -70,7 +69,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             public boolean onLongClick(final View v)  {
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getRootView().getContext());
                 builder.setTitle("Ne yapmak istiyorsun?");
-
+                builder.setCancelable(false);
                 String[] options = {"İndir", "Paylaş"};
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -78,16 +77,21 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case 0:
-                                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(quotes.get(position).getQuoteLink()));
-                                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
-                                request.setTitle(quotes.get(position).getQuoteText());
-                                request.setDescription(quotes.get(position).getQuoteName());
-                                request.allowScanningByMediaScanner();
-                                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,""+ System.currentTimeMillis());
-                                DownloadManager manager = (DownloadManager) v.getRootView().getContext().getSystemService(Context.DOWNLOAD_SERVICE);
-                                manager.enqueue(request);
+                                downloadQuote(position);
+                                break;
                             case 1:
+                                try {
+                                    final Intent sendIntent = new Intent(Intent.ACTION_SEND);
+                                    sendIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(quotes.get(position).getQuoteLink()));
+                                    sendIntent.setType("audio/mp3");
+                                    v.getRootView().getContext().startActivity(sendIntent);
+                                } catch (Exception e) {
+                                    Log.e(">>>", "Error: " + e);
+                                }
+                                break;
+                            default:
+
                         }
                     }
                 });
@@ -120,8 +124,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         }
     }
 
-    private void beginDownload(){
-
-
+    private void downloadQuote(final int position){
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(quotes.get(position).getQuoteLink()));
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
+        request.allowScanningByMediaScanner();
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,"/replikler/"+quotes.get(position).getQuoteText()+".mp3");
+        DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        manager.enqueue(request);
+        return;
     }
 }
