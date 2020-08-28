@@ -29,7 +29,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     LayoutInflater layoutInflater;
     List<Quote> quotes;
     Context context;
-
+    MediaPlayer mediaPlayer = new MediaPlayer();
 
     public Adapter(Context context,List<Quote> quotes){
         this.layoutInflater = LayoutInflater.from(context);
@@ -52,16 +52,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.quoteRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer mediaPlayer = new MediaPlayer();
                 if (mediaPlayer.isPlaying()){
-                    mediaPlayer.release();
-                    mediaPlayer = null;
+                    mediaPlayer.stop();
                 }
                 try {
+                    mediaPlayer = new MediaPlayer();
                     mediaPlayer.setDataSource(quotes.get(position).getQuoteLink());
                     mediaPlayer.prepare();
                     mediaPlayer.start();
-                } catch (IOException e) {
+                } catch (IllegalArgumentException | SecurityException | IllegalStateException | IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -98,8 +97,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 return true;
             }
         });
-    }
 
+    }
 
 
     @Override
