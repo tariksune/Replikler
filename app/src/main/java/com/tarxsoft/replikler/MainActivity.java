@@ -17,10 +17,11 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
-import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     GridLayoutManager gridLayoutManager;
-    List<Quote> quotes;
+    List<Quotes> quotes;
     Adapter adapter;
 
     @Override
@@ -53,13 +54,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.quotesList);
         quotes = new ArrayList<>();
 
-        afterAsec();
+        requestPermission();
         listOfQuotes();
         webStatus();
 
     }
 
-    public void afterAsec(){
+    public void requestPermission(){
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -67,15 +68,6 @@ public class MainActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
             }
         }, 100);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.toolbar_menu,menu);
-
-        return super.onCreateOptionsMenu(menu);
     }
 
     private boolean hasPermission(Context context, String permission){
@@ -103,16 +95,16 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject quoteObject = response.getJSONObject(i);
-                        Quote quote = new Quote();
+                        Quotes quote = new Quotes();
                         quote.setQuoteText(quoteObject.getString("quoteText").toString());
                         quote.setQuoteName(quoteObject.getString("quoteName").toString());
-                        quote.setQuoteLink(quoteObject.getString("quoteLink"));
+                        quote.setQuoteLink(quoteObject.getString("quoteLink").toString());
                         quotes.add(quote);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
-                gridLayoutManager = new GridLayoutManager(MainActivity.this,3);
+                gridLayoutManager = new GridLayoutManager(getApplicationContext(),3);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(gridLayoutManager);
                 //recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -128,8 +120,28 @@ public class MainActivity extends AppCompatActivity {
 
         requestQueue.add(jsonArrayRequest);
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        MenuItem xMenuItem = menu.findItem(R.id.search);
+        SearchView xSearchView = (SearchView) xMenuItem.getActionView();
+        xSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapter.getFilter().filter(query);
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     private boolean isNetworkConnected() {
@@ -156,4 +168,5 @@ public class MainActivity extends AppCompatActivity {
             dialog.show();
         }
     }
+
 }

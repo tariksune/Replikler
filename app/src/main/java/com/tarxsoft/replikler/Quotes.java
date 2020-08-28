@@ -1,15 +1,15 @@
 package com.tarxsoft.replikler;
 
-public class Quote {
+public class Quotes {
 
     private String quoteName;
     private String quoteText;
     private String quoteLink;
 
-    public Quote(){
+    public Quotes(){
 
     }
-    public Quote(String quoteName, String quoteText, String quoteLink){
+    public Quotes(String quoteName, String quoteText, String quoteLink){
         this.quoteName = quoteName;
         this.quoteText = quoteText;
         this.quoteLink = quoteLink;

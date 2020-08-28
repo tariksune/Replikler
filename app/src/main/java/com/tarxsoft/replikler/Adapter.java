@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,19 +23,22 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
+public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements Filterable {
 
     LayoutInflater layoutInflater;
-    List<Quote> quotes;
+    List<Quotes> quotes;
+    List<Quotes> quotesFilter;
     Context context;
     MediaPlayer mediaPlayer = new MediaPlayer();
 
-    public Adapter(Context context,List<Quote> quotes){
+    public Adapter(Context context,List<Quotes> quotes){
         this.layoutInflater = LayoutInflater.from(context);
         this.quotes = quotes;
         this.context = context;
+        this.quotesFilter = quotes;
     }
 
 
@@ -46,8 +51,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        holder.quoteText.setText(quotes.get(position).getQuoteText());
-        holder.quoteName.setText(quotes.get(position).getQuoteName());
+        holder.quoteText.setText(quotesFilter.get(position).getQuoteText());
+        holder.quoteName.setText(quotesFilter.get(position).getQuoteName());
         holder.quoteRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,10 +109,38 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     }
 
-
     @Override
     public int getItemCount() {
-        return quotes.size();
+        return quotesFilter.size();
+    }
+
+    @Override
+    public Filter getFilter(){
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                if (constraint.toString().isEmpty()){
+                    quotesFilter = quotes;
+                }else{
+                    List<Quotes> quoteFilterList = new ArrayList<>();
+                    for (Quotes quotes: quotes){
+                        if (quotes.getQuoteName().toLowerCase().contains(constraint.toString().toLowerCase())){
+                            quoteFilterList.add(quotes);
+                        }
+                    }
+                    quotesFilter = quoteFilterList;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = quotesFilter;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                quotesFilter = (ArrayList<Quotes>) results.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
