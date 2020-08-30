@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.Manifest;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -53,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.quotesList);
         quotes = new ArrayList<>();
-
-        requestPermission();
         listOfQuotes();
         webStatus();
 
@@ -98,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                         Quotes quote = new Quotes();
                         quote.setQuoteText(quoteObject.getString("quoteText").toString());
                         quote.setQuoteName(quoteObject.getString("quoteName").toString());
-                        quote.setQuoteLink(quoteObject.getString("quoteLink").toString());
+                        quote.setQuoteLink(quoteObject.getString("quoteLink"));
                         quotes.add(quote);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -125,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu (Menu menu){
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-        MenuItem xMenuItem = menu.findItem(R.id.search);
-        SearchView xSearchView = (SearchView) xMenuItem.getActionView();
+        MenuItem search = menu.findItem(R.id.search);
+        SearchView xSearchView = (SearchView) search.getActionView();
         xSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -138,6 +137,15 @@ public class MainActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 adapter.getFilter().filter(newText);
                 return false;
+            }
+        });
+
+        MenuItem about = menu.findItem(R.id.about);
+        about.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                startActivity(new Intent(getApplicationContext(),AboutActivity.class));
+                return true;
             }
         });
 
