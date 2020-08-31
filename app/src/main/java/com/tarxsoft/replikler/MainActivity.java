@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         recyclerView = findViewById(R.id.quotesList);
         quotes = new ArrayList<>();
         listOfQuotes();
@@ -95,8 +94,9 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         JSONObject quoteObject = response.getJSONObject(i);
                         Quotes quote = new Quotes();
-                        quote.setQuoteText(quoteObject.getString("quoteText").toString());
-                        quote.setQuoteName(quoteObject.getString("quoteName").toString());
+                        quote.setQuoteId(quoteObject.getString("quoteId"));
+                        quote.setQuoteText(quoteObject.getString("quoteText"));
+                        quote.setQuoteName(quoteObject.getString("quoteName"));
                         quote.setQuoteLink(quoteObject.getString("quoteLink"));
                         quotes.add(quote);
                     } catch (JSONException e) {

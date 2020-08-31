@@ -24,7 +24,7 @@
             android:layout_alignParentLeft="true"
             android:fontFamily="@font/poppinsmedium"
             android:text="Drug Name Title"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorPrimary"
             android:textSize="12sp"
             android:gravity="center"
             android:lines="3"

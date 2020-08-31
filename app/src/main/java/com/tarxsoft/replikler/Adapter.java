@@ -1,16 +1,14 @@
 package com.tarxsoft.replikler;
 
-import android.Manifest;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.os.Handler;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,18 +17,15 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,25 +90,21 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
                                 break;
                             case 1:
                                 try {
-                                    File outputFile = new File(Environment.getExternalStoragePublicDirectory
-                                            (Environment.DIRECTORY_RINGTONES), "/1.mp3");
-                                    Uri uri = Uri.fromFile(outputFile);
+                                    StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+                                    StrictMode.setVmPolicy(builder.build());
+                                    String stringFile = Environment.getExternalStorageDirectory().getPath() + File.separator + "Download/" + quotesFilter.get(position).getQuoteId() +".mp3";
+                                    File file = new File(stringFile);
+                                    if (!file.exists()){
+                                        Log.d("tag","string:"+stringFile );
+                                        Toast.makeText(v.getContext(), "Paylaşmak istediğiniz repliği indirmeniz gerekmektedir.", Toast.LENGTH_LONG).show();
+                                        return;
+                                    }
+                                    Intent shareFile = new Intent(Intent.ACTION_SEND);
+                                    shareFile.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    shareFile.setType("*/*");
+                                    shareFile.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+file));
+                                    v.getContext().startActivity(shareFile);
 
-                                    Intent share = new Intent();
-                                    share.setAction(Intent.ACTION_SEND);
-                                    share.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    share.setType("audio/*");
-                                    share.putExtra(Intent.EXTRA_STREAM, uri);
-                                    share.setPackage("com.whatsapp");
-
-                                    v.getRootView().getContext().startActivity(share);
-
-                                    /*
-                                    final Intent sendIntent = new Intent(Intent.ACTION_SEND);
-                                    sendIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    sendIntent.setType("text/*");
-                                    sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(quotes.get(position).getQuoteLink()));
-                                    v.getRootView().getContext().startActivity(sendIntent); */
                                 } catch (Exception e) {
                                     Log.e(">>>", "Error: " + e);
                                 }
@@ -181,13 +172,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
     }
 
     private void downloadQuote(final int position){
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(quotes.get(position).getQuoteLink()));
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(quotesFilter.get(position).getQuoteLink()));
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
         request.allowScanningByMediaScanner();
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_RINGTONES,"1.mp3");
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, quotesFilter.get(position).getQuoteId() +".mp3");
         DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         manager.enqueue(request);
         return;
     }
+
+
 }
