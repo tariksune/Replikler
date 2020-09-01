@@ -6,5 +6,16 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <style name="mytoast">
+        <item name="stTextBold">false</item>
+        <item name="stTextColor">@color/white</item>
+        <item name="stFont">@font/poppinsmedium</item>
+        <item name="stTextSize">11sp</item>
+        <item name="stColorBackground">#F50057</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stIconStart">@drawable/ic_error</item>
+        <item name="stLength">LONG</item>
+        <item name="stGravity">top</item>
+        <item name="stRadius">5dp</item>
+    </style>
 </resources>

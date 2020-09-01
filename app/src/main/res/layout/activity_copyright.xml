@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context=".AboutActivity">
+    tools:context=".CopyrightActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
@@ -20,7 +20,7 @@
                 android:id="@+id/copyrightText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="hakkında"
+                android:text="telif hakkı"
                 android:fontFamily="@font/poppinsmedium"
                 android:textSize="50sp"
                 android:gravity="center"
@@ -42,7 +42,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/app_about"
+                android:text="@string/app_copyright"
                 android:fontFamily="@font/poppinsmedium"
                 android:textSize="20sp"
                 android:gravity="center"

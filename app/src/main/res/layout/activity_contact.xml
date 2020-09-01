@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".ContactActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:gravity="top"
+        android:layout_weight="0.1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/copyrightText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="bize yazın"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="50sp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:gravity="center"
+        android:layout_weight="0.75">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20sp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/contact_form_name"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsmedium"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/your_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:singleLine="true"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/contact_form_email"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsmedium"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/your_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/contact_form_subject"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsmedium"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/your_subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:fontFamily="@font/poppinsmedium"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/contact_form_message"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsmedium"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/your_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:height="100sp"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/post_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="@string/contact_form_button"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:gravity="center"
+        android:layout_weight="0.15">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/logotarxsoft"/>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

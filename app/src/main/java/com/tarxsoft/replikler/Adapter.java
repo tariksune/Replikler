@@ -24,6 +24,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.muddzdev.styleabletoast.StyleableToast;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -96,7 +98,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
                                     File file = new File(stringFile);
                                     if (!file.exists()){
                                         Log.d("tag","string:"+stringFile );
-                                        Toast.makeText(v.getContext(), "Paylaşmak istediğiniz repliği indirmeniz gerekmektedir.", Toast.LENGTH_LONG).show();
+                                        StyleableToast.makeText(context, "Paylaşmak için indirmeniz gerekmektedir.", Toast.LENGTH_LONG, R.style.mytoast).show();
                                         return;
                                     }
                                     Intent shareFile = new Intent(Intent.ACTION_SEND);
