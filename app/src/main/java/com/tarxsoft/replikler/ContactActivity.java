@@ -19,54 +19,54 @@ public class ContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
         getSupportActionBar().hide();
-        final EditText your_name        = (EditText) findViewById(R.id.your_name);
-        final EditText your_email       = (EditText) findViewById(R.id.your_email);
-        final EditText your_subject     = (EditText) findViewById(R.id.your_subject);
-        final EditText your_message     = (EditText) findViewById(R.id.your_message);
+        final EditText nameContact        = (EditText) findViewById(R.id.nameContact);
+        final EditText emailContact       = (EditText) findViewById(R.id.emailContact);
+        final EditText subjectContact     = (EditText) findViewById(R.id.subjectContact);
+        final EditText messageContact     = (EditText) findViewById(R.id.messageContact);
 
-        Button email = (Button) findViewById(R.id.post_message);
-        email.setOnClickListener(new View.OnClickListener() {
+        Button sendContactButton = (Button) findViewById(R.id.sendContactButton);
+        sendContactButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name      = your_name.getText().toString();
-                String email     = your_email.getText().toString();
-                String subject   = your_subject.getText().toString();
-                String message   = your_message.getText().toString();
+                String name      = nameContact.getText().toString();
+                String email     = emailContact.getText().toString();
+                String subject   = subjectContact.getText().toString();
+                String message   = messageContact.getText().toString();
 
                 if (TextUtils.isEmpty(name)){
-                    your_name.setError("İsim kısmı boş bırakılamaz.");
-                    your_name.requestFocus();
+                    nameContact.setError("İsim kısmı boş bırakılamaz.");
+                    nameContact.requestFocus();
                     return;
                 }
 
                 Boolean onError = false;
                 if (!isValidEmail(email)) {
                     onError = true;
-                    your_email.setError("Email kısmı boş bırakılamaz.");
+                    emailContact.setError("Email kısmı boş bırakılamaz.");
                     return;
                 }
 
                 if (TextUtils.isEmpty(subject)){
-                    your_subject.setError("Konu kısmı boş bırakılamaz.");
-                    your_subject.requestFocus();
+                    subjectContact.setError("Konu kısmı boş bırakılamaz.");
+                    subjectContact.requestFocus();
                     return;
                 }
 
                 if (TextUtils.isEmpty(message)){
-                    your_message.setError("Mesaj kısmı boş bırakılamaz.");
-                    your_message.requestFocus();
+                    messageContact.setError("Mesaj kısmı boş bırakılamaz.");
+                    messageContact.requestFocus();
                     return;
                 }
                 Intent sendEmail = new Intent(android.content.Intent.ACTION_SEND);
                 sendEmail.setType("plain/text");
-                sendEmail.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"oetsune@yandex.com"});
+                sendEmail.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"tarxsoft@gmail.com"});
                 sendEmail.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
                 sendEmail.putExtra(android.content.Intent.EXTRA_TEXT,"İsim: "+name+'\n'+"E-Mail: "+email+'\n'+'\n'+"Mesaj: "+'\n'+message);
                 startActivity(Intent.createChooser(sendEmail, "Mesaj gönderildi."));
-                your_email.getText().clear();
-                your_name.getText().clear();
-                your_message.getText().clear();
-                your_subject.getText().clear();
+                nameContact.getText().clear();
+                emailContact.getText().clear();
+                subjectContact.getText().clear();
+                messageContact.getText().clear();
             }
         });
     }

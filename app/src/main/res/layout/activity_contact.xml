@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:text="bize yazın"
                 android:fontFamily="@font/poppinsmedium"
-                android:textSize="50sp"
+                android:textSize="40sp"
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textStyle="bold"/>
@@ -50,7 +50,7 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/your_name"
+                android:id="@+id/nameContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -70,7 +70,7 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/your_email"
+                android:id="@+id/emailContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
@@ -90,7 +90,7 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/your_subject"
+                android:id="@+id/subjectContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -110,7 +110,7 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/your_message"
+                android:id="@+id/messageContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:height="100sp"
@@ -121,7 +121,7 @@
                 android:textSize="12sp" />
 
             <Button
-                android:id="@+id/post_message"
+                android:id="@+id/sendContactButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
