@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/likeWhite"
     android:orientation="vertical"
     tools:context=".AboutActivity">
     <RelativeLayout
@@ -25,7 +25,7 @@
                 android:fontFamily="@font/poppinsmedium"
                 android:textSize="40sp"
                 android:gravity="center"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold"/>
 
         </LinearLayout>
@@ -36,27 +36,43 @@
         android:layout_height="0px"
         android:gravity="center"
         android:padding="15sp"
-        android:layout_weight="0.65">
+        android:layout_weight="0.6">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_about"
                 android:fontFamily="@font/poppinsmedium"
                 android:textSize="20sp"
                 android:gravity="center"
-                android:textColor="@color/white"/>
+                android:textColor="@color/colorPrimaryDark"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="50sp"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_about_2dn"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark"/>
         </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
-        android:layout_weight="0.15">
+        android:padding="15sp"
+        android:layout_weight="0.2">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

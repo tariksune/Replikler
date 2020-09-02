@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/likeWhite"
     android:orientation="vertical"
     tools:context=".ContactActivity">
     <RelativeLayout
@@ -25,7 +25,7 @@
                 android:fontFamily="@font/poppinsmedium"
                 android:textSize="40sp"
                 android:gravity="center"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold"/>
 
         </LinearLayout>
@@ -33,7 +33,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
-        android:gravity="center"
+        android:gravity="top"
         android:layout_weight="0.65">
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                 android:textAllCaps="true"
                 android:textStyle="bold"
                 android:fontFamily="@font/poppinsmedium"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimary"
                 android:textSize="12sp" />
 
             <EditText
@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimaryDark"
                 android:fontFamily="@font/poppinsmedium"
                 android:singleLine="true"
                 android:textSize="12sp" />
@@ -67,7 +67,7 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/poppinsmedium"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimary"
                 android:textSize="12sp" />
 
             <EditText
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimaryDark"
                 android:fontFamily="@font/poppinsmedium"
                 android:textSize="12sp" />
 
@@ -87,7 +87,7 @@
                 android:textAllCaps="true"
                 android:textStyle="bold"
                 android:fontFamily="@font/poppinsmedium"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimary"
                 android:textSize="12sp" />
 
             <EditText
@@ -97,7 +97,7 @@
                 android:inputType="text"
                 android:fontFamily="@font/poppinsmedium"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp" />
 
             <TextView
@@ -107,7 +107,7 @@
                 android:textAllCaps="true"
                 android:textStyle="bold"
                 android:fontFamily="@font/poppinsmedium"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimary"
                 android:textSize="12sp" />
 
             <EditText
@@ -117,7 +117,7 @@
                 android:height="100sp"
                 android:gravity="top"
                 android:inputType="textMultiLine"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimaryDark"
                 android:fontFamily="@font/poppinsmedium"
                 android:textSize="12sp" />
 
@@ -126,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/colorPrimary"
                 android:textStyle="bold"
                 android:fontFamily="@font/poppinsmedium"
                 android:text="@string/contact_form_button"
