@@ -79,7 +79,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
             public boolean onLongClick(final View v)  {
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getRootView().getContext());
                 builder.setTitle("Ne yapmak istiyorsun?");
-                builder.setCancelable(false);
+                //builder.setCancelable(false);
                 String[] options = {"İndir", "Paylaş"};
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @RequiresApi(api = Build.VERSION_CODES.N)
