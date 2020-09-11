@@ -1,6 +1,7 @@
 package com.tarxsoft.replikler;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -15,6 +16,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.quotesList);
         quotes = new ArrayList<>();
+        requestPermission();
         listOfQuotes();
         webStatus();
 
@@ -78,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
 
             }else{
-                android.os.Process.killProcess(android.os.Process.myPid());
-                System.exit(1);
+                startActivity(new Intent(getApplicationContext(),PermissionActivity.class));
             }
         }
     }

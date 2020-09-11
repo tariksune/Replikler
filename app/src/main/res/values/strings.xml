@@ -15,6 +15,9 @@
     <string name="contact_form_post_message">Lütfen Bekleyin! Mesajınızı ilgili departmana iletiyoruz.</string>
     <string name="contact_posted">Mesajınız başarılı bir şekilde iletildi.</string>
 
+    <string name="permission_button_text">İzin Ver</string>
+    <string name="permission_text">Uygulama Bilgileri -> İzinler -> Kayıt Yeri</string>
+    <string name="permission_text_2">kısmına izin vermeniz gerekmektedir.</string>
 
 
 </resources>
