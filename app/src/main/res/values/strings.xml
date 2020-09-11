@@ -15,6 +15,10 @@
     <string name="contact_form_post_message">Lütfen Bekleyin! Mesajınızı ilgili departmana iletiyoruz.</string>
     <string name="contact_posted">Mesajınız başarılı bir şekilde iletildi.</string>
 
+    <string name="connection_button_text">Bağlanmayı Dene</string>
+    <string name="connection_head_text">Hay Aksi!</string>
+    <string name="connection_text">İntenet bağlantısını kontrol ediniz.</string>
+
     <string name="permission_button_text">İzin Ver</string>
     <string name="permission_again_button_text">Tekrar Dene</string>
     <string name="permission_head_text">İzin Verilmedi!</string>

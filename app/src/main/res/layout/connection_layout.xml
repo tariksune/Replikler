@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hay Aksi!"
+        android:text="@string/connection_head_text"
         android:gravity="center"
         android:textColor="@color/white"
         android:fontFamily="@font/poppinsmedium"
@@ -26,26 +26,38 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="İntenet bağlantısını kontrol ediniz."
+        android:text="@string/connection_text"
         android:gravity="center"
         android:textColor="@color/white"
         android:fontFamily="@font/poppinsmedium"
         android:textSize="15sp"
         android:textStyle="normal"/>
 
-    <Button
-        android:id="@+id/connectionAgainButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bağlanmayı Dene"
-        android:background="@drawable/connection_button_bg"
-        android:textColor="@color/white"
-        android:fontFamily="@font/poppinsmedium"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        android:textAllCaps="false"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
         android:padding="10sp"
-        android:layout_marginTop="20sp"/>
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5sp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/connectionAgainButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/connection_button_text"
+                android:background="@drawable/connection_button_bg"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                android:textAllCaps="true" />
+        </LinearLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>
