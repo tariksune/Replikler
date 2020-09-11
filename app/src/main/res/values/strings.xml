@@ -16,8 +16,8 @@
     <string name="contact_posted">Mesajınız başarılı bir şekilde iletildi.</string>
 
     <string name="permission_button_text">İzin Ver</string>
-    <string name="permission_text">Uygulama Bilgileri -> İzinler -> Kayıt Yeri</string>
-    <string name="permission_text_2">kısmına izin vermeniz gerekmektedir.</string>
-
+    <string name="permission_again_button_text">Tekrar Dene</string>
+    <string name="permission_head_text">İzin Verilmedi!</string>
+    <string name="permission_text">Lütfen kayıt yeri (depolama) iznini açınız. Replikleri indirip, paylaşabilmeniz için gereklidir.</string>
 
 </resources>
