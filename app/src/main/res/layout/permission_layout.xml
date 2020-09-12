@@ -21,6 +21,7 @@
         android:textColor="@color/white"
         android:fontFamily="@font/poppinsmedium"
         android:textSize="30sp"
+        android:padding="10sp"
         android:textStyle="bold"/>
 
     <TextView
@@ -31,11 +32,12 @@
         android:textColor="@color/white"
         android:fontFamily="@font/poppinsmedium"
         android:textSize="15sp"
+        android:padding="10sp"
         android:textStyle="normal"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:gravity="center"
         android:padding="10sp"
         android:layout_weight="1">
@@ -66,6 +68,7 @@
                     android:textAllCaps="true" />
                 </LinearLayout>
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
