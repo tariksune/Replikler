@@ -77,28 +77,74 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
         holder.quoteRelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(final View v)  {
-                AlertDialog.Builder builder = new AlertDialog.Builder(v.getRootView().getContext());
-                builder.setTitle("Ne yapmak istiyorsun?");
+                final AlertDialog.Builder builder = new AlertDialog.Builder(v.getRootView().getContext());
+                builder.setIcon(R.drawable.ic_share);
+                builder.setTitle(R.string.adapter_dialog_options_head_text);
                 //builder.setCancelable(false);
-                String[] options = {"İndir", "Paylaş"};
+                final String[] options = {"Repliği İndir", "Whatsapp'ta Paylaş!", "Telegram'da Paylaş!", "Diğer"};
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case 0:
-
                                 downloadQuote(position);
                                 break;
                             case 1:
                                 try {
                                     StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
                                     StrictMode.setVmPolicy(builder.build());
-                                    String stringFile = Environment.getExternalStorageDirectory().getPath() + File.separator + "Download/" + quotesFilter.get(position).getQuoteId() +".mp3";
+                                    String stringFile = Environment.getExternalStorageDirectory().getPath() + File.separator + "Download/replikler/" + quotesFilter.get(position).getQuoteId() +".mp3";
                                     File file = new File(stringFile);
                                     if (!file.exists()){
                                         Log.d("tag","string:"+stringFile );
-                                        StyleableToast.makeText(context, "Paylaşmak için indirmeniz gerekmektedir.", Toast.LENGTH_LONG, R.style.mytoast).show();
+                                        StyleableToast.makeText(context, "Paylaşmak için indirmeniz gerekmektedir.", Toast.LENGTH_LONG, R.style.mytoastredtop).show();
+                                        return;
+                                    }
+                                    Intent shareFile = new Intent(Intent.ACTION_SEND);
+                                    shareFile.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    shareFile.setPackage("com.whatsapp");
+                                    shareFile.setType("*/*");
+                                    shareFile.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+file));
+                                    v.getContext().startActivity(shareFile);
+
+                                } catch (Exception e) {
+                                    StyleableToast.makeText(context,"Uygulama yüklü değil.",Toast.LENGTH_LONG,R.style.mytoastgreencenter).show();
+                                    Log.e(">>>", "Error: " + e);
+                                }
+                                break;
+                            case 2:
+                                try {
+                                    StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+                                    StrictMode.setVmPolicy(builder.build());
+                                    String stringFile = Environment.getExternalStorageDirectory().getPath() + File.separator + "Download/replikler/" + quotesFilter.get(position).getQuoteId() +".mp3";
+                                    File file = new File(stringFile);
+                                    if (!file.exists()){
+                                        Log.d("tag","string:"+stringFile );
+                                        StyleableToast.makeText(context, "Paylaşmak için indirmeniz gerekmektedir.", Toast.LENGTH_LONG, R.style.mytoastredtop).show();
+                                        return;
+                                    }
+                                    Intent shareFile = new Intent(Intent.ACTION_SEND);
+                                    shareFile.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    shareFile.setPackage("org.telegram.messenger");
+                                    shareFile.setType("*/*");
+                                    shareFile.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+file));
+                                    v.getContext().startActivity(shareFile);
+
+                                } catch (Exception e) {
+                                    StyleableToast.makeText(context,"Uygulama yüklü değil.",Toast.LENGTH_LONG,R.style.mytoastgreencenter).show();
+                                    Log.e(">>>", "Error: " + e);
+                                }
+                                break;
+                            case 3:
+                                try {
+                                    StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+                                    StrictMode.setVmPolicy(builder.build());
+                                    String stringFile = Environment.getExternalStorageDirectory().getPath() + File.separator + "Download/replikler/" + quotesFilter.get(position).getQuoteId() +".mp3";
+                                    File file = new File(stringFile);
+                                    if (!file.exists()){
+                                        Log.d("tag","string:"+stringFile );
+                                        StyleableToast.makeText(context, "Paylaşmak için indirmeniz gerekmektedir.", Toast.LENGTH_LONG, R.style.mytoastredtop).show();
                                         return;
                                     }
                                     Intent shareFile = new Intent(Intent.ACTION_SEND);
@@ -108,6 +154,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
                                     v.getContext().startActivity(shareFile);
 
                                 } catch (Exception e) {
+                                    StyleableToast.makeText(context,"Beklenmedik bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.",Toast.LENGTH_LONG,R.style.mytoastredtop).show();
                                     Log.e(">>>", "Error: " + e);
                                 }
                                 break;
@@ -178,7 +225,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
         request.allowScanningByMediaScanner();
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, quotesFilter.get(position).getQuoteId() +".mp3");
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "/replikler/"+ quotesFilter.get(position).getQuoteId() +".mp3");
         DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         manager.enqueue(request);
         return;

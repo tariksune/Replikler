@@ -24,4 +24,6 @@
     <string name="permission_head_text">İzin Verilmedi!</string>
     <string name="permission_text">Lütfen kayıt yeri (depolama) iznini açınız. Replikleri indirip, paylaşabilmeniz için gereklidir.</string>
 
+    <string name="adapter_dialog_options_head_text">Seçenekler</string>
+
 </resources>
