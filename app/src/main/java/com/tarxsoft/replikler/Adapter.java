@@ -37,7 +37,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
     List<Quotes> quotes;
     List<Quotes> quotesFilter;
     Context context;
-    MediaPlayer mediaPlayer = new MediaPlayer();
+    public static MediaPlayer mediaPlayer = new MediaPlayer();
 
     public Adapter(Context context,List<Quotes> quotes){
         this.layoutInflater = LayoutInflater.from(context);
@@ -230,6 +230,4 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
         manager.enqueue(request);
         return;
     }
-
-
 }

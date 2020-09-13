@@ -34,6 +34,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
+import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,10 +47,18 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
     private static String JSON_URL = "https://www.tariksune.com/replik-list.json";
+
+    private AdView adView;
+    private PublisherInterstitialAd publisherInterstitialAd;
+    ScheduledExecutorService scheduledExecutorService;
 
     RecyclerView recyclerView;
     GridLayoutManager gridLayoutManager;
@@ -58,9 +72,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.quotesList);
         quotes = new ArrayList<>();
         requestPermission();
-        listOfQuotes();
         webStatus();
-
+        prepareInterstitialAd();
+        loadUnterstitialAd();
+        listOfQuotes();
     }
 
     public void requestPermission(){
@@ -138,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 //recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 adapter = new Adapter(getApplicationContext(),quotes);
                 recyclerView.setAdapter(adapter);
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -223,6 +239,53 @@ public class MainActivity extends AppCompatActivity {
             });
             dialog.show();
         }
+    }
+
+    private void prepareInterstitialAd(){
+        publisherInterstitialAd = new PublisherInterstitialAd(this);
+        publisherInterstitialAd.setAdUnitId("/6499/example/interstitial");
+        publisherInterstitialAd.loadAd(new PublisherAdRequest.Builder().build());
+
+        adView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+        recyclerView.setPadding(0, 0, 0, adView.getHeight());
+        recyclerView.setClipToPadding(false);
+
+    }
+
+    private void loadUnterstitialAd(){
+        scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (publisherInterstitialAd.isLoaded()){
+                            publisherInterstitialAd.show();
+                        }else{
+
+                        }
+                        prepareInterstitialAd();
+                    }
+                });
+            }
+        },60,60, TimeUnit.SECONDS);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        scheduledExecutorService.shutdown();
+        super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        scheduledExecutorService.shutdown();
+        super.onBackPressed();
     }
 
 }
