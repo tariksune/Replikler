@@ -73,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
         quotes = new ArrayList<>();
         requestPermission();
         webStatus();
-        prepareInterstitialAd();
-        loadUnterstitialAd();
+        prepareAds();
         listOfQuotes();
+        loadInterstitialAd();
     }
 
     public void requestPermission(){
@@ -153,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 //recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 adapter = new Adapter(getApplicationContext(),quotes);
                 recyclerView.setAdapter(adapter);
+
 
             }
         }, new Response.ErrorListener() {
@@ -241,20 +242,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void prepareInterstitialAd(){
-        publisherInterstitialAd = new PublisherInterstitialAd(this);
-        publisherInterstitialAd.setAdUnitId("/6499/example/interstitial");
-        publisherInterstitialAd.loadAd(new PublisherAdRequest.Builder().build());
-
+    private void prepareAds(){
         adView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
         recyclerView.setPadding(0, 0, 0, adView.getHeight());
         recyclerView.setClipToPadding(false);
 
+        publisherInterstitialAd = new PublisherInterstitialAd(this);
+        publisherInterstitialAd.setAdUnitId("/6499/example/interstitial");
+        publisherInterstitialAd.loadAd(new PublisherAdRequest.Builder().build());
     }
 
-    private void loadUnterstitialAd(){
+    private void loadInterstitialAd(){
         scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
         scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
             @Override
@@ -267,11 +267,11 @@ public class MainActivity extends AppCompatActivity {
                         }else{
 
                         }
-                        prepareInterstitialAd();
+                        prepareAds();
                     }
                 });
             }
-        },60,60, TimeUnit.SECONDS);
+        },10,10, TimeUnit.SECONDS);
 
     }
 
