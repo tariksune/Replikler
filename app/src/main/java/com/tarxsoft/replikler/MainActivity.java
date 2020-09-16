@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -262,7 +263,8 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (publisherInterstitialAd.isLoaded()){
+                        boolean stateAlive = getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.RESUMED);
+                        if (stateAlive && publisherInterstitialAd.isLoaded()){
                             publisherInterstitialAd.show();
                         }else{
 
@@ -271,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-        },10,10, TimeUnit.SECONDS);
+        },90,90, TimeUnit.SECONDS);
 
     }
 
