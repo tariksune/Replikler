@@ -6,6 +6,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="mytoastredtop">
         <item name="stTextBold">false</item>
         <item name="stTextColor">@color/white</item>
@@ -18,6 +19,20 @@
         <item name="stGravity">top</item>
         <item name="stRadius">5dp</item>
     </style>
+
+    <style name="mytoastswipe">
+        <item name="stTextBold">false</item>
+        <item name="stTextColor">@color/white</item>
+        <item name="stFont">@font/poppinsmedium</item>
+        <item name="stTextSize">13sp</item>
+        <item name="stColorBackground">@color/colorPrimary</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stIconStart">@drawable/ic_refresh</item>
+        <item name="stLength">SHORT</item>
+        <item name="stGravity">center</item>
+        <item name="stRadius">5dp</item>
+    </style>
+
     <style name="mytoastgreencenter">
         <item name="stTextBold">false</item>
         <item name="stTextColor">@color/white</item>

@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -28,6 +29,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -41,6 +43,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
 import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -63,20 +66,32 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     GridLayoutManager gridLayoutManager;
+    SwipeRefreshLayout swipeRefreshLayout;
     List<Quotes> quotes;
     Adapter adapter;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.quotesList);
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+        context = MainActivity.this;
         quotes = new ArrayList<>();
         requestPermission();
         webStatus();
         prepareAds();
         listOfQuotes();
         loadInterstitialAd();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                StyleableToast.makeText(context,"Güncellendi.", Toast.LENGTH_SHORT,R.style.mytoastswipe).show();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     public void requestPermission(){
@@ -290,4 +305,8 @@ public class MainActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 }
