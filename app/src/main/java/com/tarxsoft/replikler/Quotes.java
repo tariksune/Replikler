@@ -2,6 +2,7 @@ package com.tarxsoft.replikler;
 
 public class Quotes {
 
+    private Integer id;
     private String quoteId;
     private String quoteName;
     private String quoteText;
@@ -10,12 +11,21 @@ public class Quotes {
     public Quotes(){
 
     }
-    public Quotes(String quoteId, String quoteName, String quoteText, String quoteLink){
+    public Quotes(Integer id, String quoteId, String quoteName, String quoteText, String quoteLink){
+        this.id = id;
         this.quoteId = quoteId;
         this.quoteName = quoteName;
         this.quoteText = quoteText;
         this.quoteLink = quoteLink;
 
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getQuoteId() {
