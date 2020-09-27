@@ -58,7 +58,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static String JSON_URL = "https://ccd303523aff.ngrok.io/api/quotes";
+    private static String JSON_URL = "https://e127eb3a8554.ngrok.io/api/quotes";
 
     private AdView adView;
     private PublisherInterstitialAd publisherInterstitialAd;
