@@ -272,13 +272,6 @@ public class MainActivity extends AppCompatActivity {
         publisherInterstitialAd = new PublisherInterstitialAd(this);
         publisherInterstitialAd.setAdUnitId("/6499/example/interstitial");
         publisherInterstitialAd.loadAd(new PublisherAdRequest.Builder().build());
-        publisherInterstitialAd.setAdListener(new AdListener(){
-            @Override
-            public void onAdClosed(){
-                super.onAdClosed();
-                finish();
-            }
-        });
     }
 
     private void loadInterstitialAd(){
