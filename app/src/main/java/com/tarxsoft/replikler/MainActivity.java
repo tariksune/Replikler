@@ -315,7 +315,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-
         scheduledExecutorService.shutdown();
         super.onDestroy();
     }

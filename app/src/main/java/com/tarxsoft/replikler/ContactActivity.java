@@ -92,4 +92,8 @@ public class ContactActivity extends AppCompatActivity {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+
+    public void backImageButton(View view) {
+        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+    }
 }

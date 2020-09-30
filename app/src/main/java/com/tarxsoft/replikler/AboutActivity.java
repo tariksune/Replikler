@@ -22,4 +22,8 @@ public class AboutActivity extends AppCompatActivity {
         openLink.setData(Uri.parse("https://play.google.com/store/apps/dev?id=8951161100903318890"));
         startActivity(openLink);
     }
+
+    public void backImageButton(View view) {
+        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+    }
 }
