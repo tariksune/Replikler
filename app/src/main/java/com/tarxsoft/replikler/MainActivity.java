@@ -58,7 +58,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static String JSON_URL = "";
+    private static String JSON_URL = "https://www.tariksune.com/replik-list.json";
 
     private AdView adView;
     private PublisherInterstitialAd publisherInterstitialAd;
@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                recreate();
                 StyleableToast.makeText(context,"Güncellendi.", Toast.LENGTH_SHORT,R.style.mytoastswipe).show();
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -208,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 startActivity(new Intent(getApplicationContext(), ContactActivity.class));
+                AdsBetween2Activities();
                 return true;
             }
         });
@@ -217,6 +219,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 startActivity(new Intent(getApplicationContext(), CopyrightActivity.class));
+                AdsBetween2Activities();
                 return true;
             }
         });
@@ -226,6 +229,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 startActivity(new Intent(getApplicationContext(), AboutActivity.class));
+                AdsBetween2Activities();
                 return true;
             }
         });
@@ -268,6 +272,13 @@ public class MainActivity extends AppCompatActivity {
         publisherInterstitialAd = new PublisherInterstitialAd(this);
         publisherInterstitialAd.setAdUnitId("/6499/example/interstitial");
         publisherInterstitialAd.loadAd(new PublisherAdRequest.Builder().build());
+        publisherInterstitialAd.setAdListener(new AdListener(){
+            @Override
+            public void onAdClosed(){
+                super.onAdClosed();
+                finish();
+            }
+        });
     }
 
     private void loadInterstitialAd(){
@@ -289,6 +300,16 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         },90,90, TimeUnit.SECONDS);
+
+    }
+
+    public void AdsBetween2Activities() {
+
+        if (publisherInterstitialAd.isLoaded()){
+            publisherInterstitialAd.show();
+        }else{
+            finish();
+        }
 
     }
 
