@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +32,7 @@ import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -58,6 +60,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "TAG";
     private static String JSON_URL = "https://www.tariksune.com/replik-list.json";
 
     private AdView adView;
@@ -70,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     List<Quotes> quotes;
     Adapter adapter;
     Context context;
+    LottieAnimationView loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,6 +152,8 @@ public class MainActivity extends AppCompatActivity {
     private void listOfQuotes() {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
+        loading = (LottieAnimationView) findViewById(R.id.loading);
+        loading.setVisibility(View.VISIBLE);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, JSON_URL, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -164,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
+                loading.setVisibility(View.INVISIBLE);
                 gridLayoutManager = new GridLayoutManager(getApplicationContext(),3);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(gridLayoutManager);
@@ -176,7 +183,8 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                loading.setVisibility(View.INVISIBLE);
+                Log.d(TAG,"Hata: "+ error.getMessage());
             }
         });
 
