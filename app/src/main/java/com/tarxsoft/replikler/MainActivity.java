@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                recreate();
+                listOfQuotes();
                 StyleableToast.makeText(context,"Güncellendi.", Toast.LENGTH_SHORT,R.style.mytoastswipe).show();
                 swipeRefreshLayout.setRefreshing(false);
             }
