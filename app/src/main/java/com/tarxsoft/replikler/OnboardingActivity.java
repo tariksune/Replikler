@@ -67,17 +67,17 @@ public class OnboardingActivity extends AppCompatActivity {
         OnboardingItem shareQuotes = new OnboardingItem();
         shareQuotes.setTitle("Özgürce Paylaş!");
         shareQuotes.setDescription("Tüm replikleri dilediğin platformda paylaşabilirsin.");
-        shareQuotes.setImage(R.drawable.confirm);
+        shareQuotes.setImage(R.drawable.share);
 
         OnboardingItem downloadQuotes = new OnboardingItem();
         downloadQuotes.setTitle("İndirmeyi Unutma!");
         downloadQuotes.setDescription("Replikleri paylaşmadan önce indirmen gerek.");
-        downloadQuotes.setImage(R.drawable.information);
+        downloadQuotes.setImage(R.drawable.download);
 
         OnboardingItem reviewQuotes = new OnboardingItem();
         reviewQuotes.setTitle("Bizi Oyla!");
         reviewQuotes.setDescription("Uygulamayı beğendiysen lütfen Google Play'de bize oy ver! Eksiklerimiz var ise uygulama içerisinden bize hemen bildirebilirsin.");
-        reviewQuotes.setImage(R.drawable.customerreview);
+        reviewQuotes.setImage(R.drawable.attention);
 
         onboardingItems.add(shareQuotes);
         onboardingItems.add(downloadQuotes);

@@ -12,7 +12,7 @@
     <ImageView
         android:id="@+id/onboardImage"
         android:layout_width="match_parent"
-        android:layout_height="400sp"
+        android:layout_height="wrap_content"
         android:layout_margin="15sp"
         android:adjustViewBounds="true"
         android:layout_gravity="top"
@@ -22,21 +22,23 @@
         android:id="@+id/onboardTextTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom"
+        android:gravity="center"
+        android:layout_gravity="bottom"
         android:textColor="@color/colorPrimary"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/poppinsmedium" />
+        android:textSize="30sp"
+        android:textStyle="normal"
+        android:fontFamily="@font/nunitobold" />
 
     <TextView
         android:id="@+id/onboardDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom"
+        android:gravity="center"
+        android:layout_gravity="bottom"
         android:textColor="@color/black"
         android:paddingTop="7sp"
-        android:textSize="13sp"
-        android:fontFamily="@font/poppinsmedium" />
+        android:textSize="16sp"
+        android:fontFamily="@font/nunitolight" />
 
 
 </LinearLayout>

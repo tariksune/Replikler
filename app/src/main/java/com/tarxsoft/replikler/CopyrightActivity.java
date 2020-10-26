@@ -18,4 +18,9 @@ public class CopyrightActivity extends AppCompatActivity {
     public void backImageButton(View view) {
         startActivity(new Intent(getApplicationContext(),MainActivity.class));
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+    }
 }

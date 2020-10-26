@@ -300,7 +300,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-        },90,90, TimeUnit.SECONDS);
+        },45,45, TimeUnit.SECONDS);
 
     }
 
