@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                clearData();
                 listOfQuotes();
                 StyleableToast.makeText(context,"Güncellendi.", Toast.LENGTH_SHORT,R.style.mytoastswipe).show();
                 swipeRefreshLayout.setRefreshing(false);
@@ -312,6 +313,11 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
+    }
+
+    public void clearData() {
+        quotes.clear();
+        adapter.notifyDataSetChanged();
     }
 
     @Override
