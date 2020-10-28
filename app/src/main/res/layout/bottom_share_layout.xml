@@ -7,16 +7,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/optionsLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Seçenekler"
-        android:textSize="25sp"
-        android:layout_gravity="center"
-        android:textColor="@color/black"
-        android:padding="20sp"
-        android:fontFamily="@font/nunitolight" />
-
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="10sp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seçenekler"
+            android:textSize="25sp"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/nunitolight" />
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/downloadQuoteLayout"
         android:layout_width="match_parent"
@@ -27,6 +33,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
             android:src="@drawable/ic_download"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -34,7 +41,7 @@
                 android:text="İndir"
                 android:textSize="20sp"
                 android:layout_marginLeft="15sp"
-                android:fontFamily="@font/nunitosemibold"/>
+                android:fontFamily="@font/nunitolight"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/whatsappShareLayout"
@@ -46,6 +53,7 @@
         <ImageView
             android:layout_width="24sp"
             android:layout_height="24sp"
+            android:layout_marginLeft="10sp"
             android:src="@drawable/whatsapp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -53,7 +61,7 @@
             android:text="Whatsapp'ta Paylaş"
             android:textSize="20sp"
             android:layout_marginLeft="15sp"
-            android:fontFamily="@font/nunitosemibold"/>
+            android:fontFamily="@font/nunitolight"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/telegramShareLayout"
@@ -65,6 +73,7 @@
         <ImageView
             android:layout_width="24sp"
             android:layout_height="24sp"
+            android:layout_marginLeft="10sp"
             android:src="@drawable/telegram"/>
         <TextView
             android:layout_width="wrap_content"
@@ -72,7 +81,7 @@
             android:text="Telegram'da Paylaş"
             android:textSize="20sp"
             android:layout_marginLeft="15sp"
-            android:fontFamily="@font/nunitosemibold"/>
+            android:fontFamily="@font/nunitolight"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/otherLayout"
@@ -84,6 +93,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
             android:src="@drawable/ic_share"/>
         <TextView
             android:layout_width="wrap_content"
@@ -91,7 +101,7 @@
             android:text="Diğer"
             android:textSize="20sp"
             android:layout_marginLeft="15sp"
-            android:fontFamily="@font/nunitosemibold"/>
+            android:fontFamily="@font/nunitolight"/>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
