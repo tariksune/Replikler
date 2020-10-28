@@ -87,6 +87,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
                     @Override
                     public void onClick(View view) {
                         downloadQuote(position);
+                        bottomSheetDialog.dismiss();
                     }
                 });
 
@@ -114,7 +115,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
                             StyleableToast.makeText(context,"Uygulama yüklü değil.",Toast.LENGTH_LONG,R.style.mytoastgreencenter).show();
                             Log.e(">>>", "Error: " + e);
                         }
-
+                        bottomSheetDialog.dismiss();
                     }
                 });
 
@@ -142,7 +143,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
                             StyleableToast.makeText(context,"Uygulama yüklü değil.",Toast.LENGTH_LONG,R.style.mytoastgreencenter).show();
                             Log.e(">>>", "Error: " + e);
                         }
-
+                        bottomSheetDialog.dismiss();
                     }
                 });
 
@@ -169,7 +170,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
                             StyleableToast.makeText(context,"Beklenmedik bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.",Toast.LENGTH_LONG,R.style.mytoastredtop).show();
                             Log.e(">>>", "Error: " + e);
                         }
-
+                        bottomSheetDialog.dismiss();
                     }
                 });
                 bottomSheetDialog.setContentView(sheetView);
