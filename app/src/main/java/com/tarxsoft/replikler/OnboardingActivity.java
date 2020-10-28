@@ -5,7 +5,6 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +53,7 @@ public class OnboardingActivity extends AppCompatActivity {
                 if (viewPager2.getCurrentItem() + 1 < onboardingAdapter.getItemCount()) {
                     viewPager2.setCurrentItem(viewPager2.getCurrentItem()+1);
                 } else {
-                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
                 }
             }

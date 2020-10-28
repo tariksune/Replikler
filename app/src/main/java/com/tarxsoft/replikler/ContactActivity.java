@@ -88,7 +88,7 @@ public class ContactActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 
     private boolean isValidEmail(String email) {
@@ -99,6 +99,6 @@ public class ContactActivity extends AppCompatActivity {
     }
 
     public void backImageButton(View view) {
-        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 }
