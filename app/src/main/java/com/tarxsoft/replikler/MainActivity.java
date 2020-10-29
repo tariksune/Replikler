@@ -55,7 +55,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     private static final String TAG = "TAG";
     private static String JSON_URL = "https://www.tariksune.com/replik-list.json";
@@ -261,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 
-    public void webStatus(){
+    private void webStatus(){
         if (!isNetworkConnected()){
             Dialog dialog = new Dialog(this);
             dialog.setContentView(R.layout.connection_layout);
@@ -340,6 +340,11 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         scheduledExecutorService.shutdown();
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override

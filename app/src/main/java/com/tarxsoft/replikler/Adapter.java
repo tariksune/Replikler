@@ -2,12 +2,10 @@ package com.tarxsoft.replikler;
 
 import android.app.DownloadManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Typeface;
+import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.util.Log;
@@ -21,8 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -236,8 +232,23 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "/replikler/"+ quotesFilter.get(position).getQuoteId() +".mp3");
         DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
-        manager.enqueue(request);
-        StyleableToast.makeText(context,"Başarılı bir şekilde indirildi.",Toast.LENGTH_SHORT,R.style.mytoastdownloadtop).show();
-        return;
+        long downloadId = manager.enqueue(request);
+        validDownload(downloadId,manager);
+    }
+
+    private boolean validDownload(long downloadId,DownloadManager manager) {
+
+        Cursor c = manager.query(new DownloadManager.Query().setFilterById(downloadId));
+        if (c.moveToFirst()) {
+            int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
+            if (status == DownloadManager.STATUS_FAILED || status == DownloadManager.STATUS_PAUSED) {
+                StyleableToast.makeText(context,"Hay aksi! Lütfen daha sonra tekrar deneyin.",Toast.LENGTH_LONG,R.style.mytoastredtop).show();
+                return true;
+            } else {
+                StyleableToast.makeText(context,"İndirmeye başlıyor.",Toast.LENGTH_LONG,R.style.mytoastdownloadtop).show();
+                return false;
+            }
+        }
+        return false;
     }
 }
