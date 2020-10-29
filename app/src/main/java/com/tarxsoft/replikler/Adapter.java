@@ -87,7 +87,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
                     @Override
                     public void onClick(View view) {
                         downloadQuote(position);
-                        bottomSheetDialog.dismiss();
                     }
                 });
 
@@ -238,6 +237,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "/replikler/"+ quotesFilter.get(position).getQuoteId() +".mp3");
         DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         manager.enqueue(request);
+        StyleableToast.makeText(context,"Başarılı bir şekilde indirildi.",Toast.LENGTH_SHORT,R.style.mytoastdownloadtop).show();
         return;
     }
 }
