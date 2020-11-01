@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,19 +21,19 @@ public class ContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
         getSupportActionBar().hide();
-        final EditText nameContact        = (EditText) findViewById(R.id.nameContact);
-        final EditText emailContact       = (EditText) findViewById(R.id.emailContact);
-        final EditText subjectContact     = (EditText) findViewById(R.id.subjectContact);
-        final EditText messageContact     = (EditText) findViewById(R.id.messageContact);
+        final TextInputLayout nameContact        = (TextInputLayout) findViewById(R.id.nameContact);
+        final TextInputLayout emailContact       = (TextInputLayout) findViewById(R.id.emailContact);
+        final TextInputLayout subjectContact     = (TextInputLayout) findViewById(R.id.subjectContact);
+        final TextInputLayout messageContact     = (TextInputLayout) findViewById(R.id.messageContact);
 
         Button sendContactButton = (Button) findViewById(R.id.sendContactButton);
         sendContactButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name      = nameContact.getText().toString();
-                String email     = emailContact.getText().toString();
-                String subject   = subjectContact.getText().toString();
-                String message   = messageContact.getText().toString();
+                String name      = nameContact.getEditText().getText().toString();
+                String email     = emailContact.getEditText().getText().toString();
+                String subject   = subjectContact.getEditText().getText().toString();
+                String message   = messageContact.getEditText().getText().toString();
 
                 if (TextUtils.isEmpty(name)){
                     nameContact.setError("İsim kısmı boş bırakılamaz.");
@@ -42,7 +44,7 @@ public class ContactActivity extends AppCompatActivity {
                 Boolean onError = false;
                 if (!isValidEmail(email)) {
                     onError = true;
-                    emailContact.setError("Email kısmı boş bırakılamaz.");
+                    emailContact.setError("Geçerli bir mail adresi giriniz. Örn: tarxsoft@gmail.com");
                     return;
                 }
 
@@ -62,11 +64,11 @@ public class ContactActivity extends AppCompatActivity {
                 sendEmail.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"tarxsoft@gmail.com"});
                 sendEmail.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
                 sendEmail.putExtra(android.content.Intent.EXTRA_TEXT,"İsim: "+name+'\n'+"E-Mail: "+email+'\n'+'\n'+"Mesaj: "+'\n'+message);
-                startActivity(Intent.createChooser(sendEmail, "Mesaj gönderildi."));
-                nameContact.getText().clear();
-                emailContact.getText().clear();
-                subjectContact.getText().clear();
-                messageContact.getText().clear();
+                startActivity(Intent.createChooser(sendEmail, "Mesajınız başarılı bir şekilde gönderildi."));
+                nameContact.getEditText().getText().clear();
+                emailContact.getEditText().getText().clear();
+                subjectContact.getEditText().getText().clear();
+                messageContact.getEditText().getText().clear();
             }
         });
     }

@@ -50,86 +50,76 @@
             android:layout_height="wrap_content"
             android:padding="20sp"
             android:orientation="vertical">
-            <TextView
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/contact_form_name"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:fontFamily="@font/poppinsmedium"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
+                android:layout_marginBottom="13sp"
+                android:hint="İsim"
+                android:fontFamily="@font/nunitoregular"
+                app:endIconCheckable="true"
+                android:id="@+id/nameContact">
 
-            <EditText
-                android:id="@+id/nameContact"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textColor="@color/colorPrimaryDark"
-                android:fontFamily="@font/poppinsmedium"
-                android:singleLine="true"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/contact_form_email"
-                android:textStyle="bold"
-                android:fontFamily="@font/poppinsmedium"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
-
-            <EditText
+                android:layout_marginBottom="13sp"
+                android:hint="Mail"
+                android:fontFamily="@font/nunitoregular"
+                app:endIconCheckable="true"
                 android:id="@+id/emailContact"
+                app:endIconDrawable="@android:drawable/sym_action_email"
+                app:endIconMode="custom"
+                app:endIconTint="@color/colorPrimaryDark">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:singleLine="true"
-                android:textColor="@color/colorPrimaryDark"
-                android:fontFamily="@font/poppinsmedium"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/contact_form_subject"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:fontFamily="@font/poppinsmedium"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
-
-            <EditText
+                android:layout_marginBottom="13sp"
+                android:hint="Konu"
+                android:fontFamily="@font/nunitoregular"
+                app:endIconCheckable="true"
                 android:id="@+id/subjectContact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:fontFamily="@font/poppinsmedium"
-                android:singleLine="true"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp" />
+                app:endIconDrawable="@android:drawable/stat_notify_chat"
+                app:endIconMode="custom"
+                app:endIconTint="@color/colorPrimaryDark">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/contact_form_message"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:fontFamily="@font/poppinsmedium"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-            <EditText
-                android:id="@+id/messageContact"
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:height="100sp"
-                android:gravity="top"
-                android:inputType="textMultiLine"
-                android:textColor="@color/colorPrimaryDark"
-                android:fontFamily="@font/poppinsmedium"
-                android:textSize="12sp" />
+                android:layout_height="130sp"
+                android:layout_marginBottom="13sp"
+                android:hint="Mesaj"
+                android:fontFamily="@font/nunitoregular"
+                app:endIconCheckable="true"
+                android:id="@+id/messageContact">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/sendContactButton"
@@ -138,7 +128,7 @@
                 android:layout_gravity="center"
                 android:background="@color/colorPrimary"
                 android:textStyle="bold"
-                android:fontFamily="@font/poppinsmedium"
+                android:fontFamily="@font/nunitolight"
                 android:text="@string/contact_form_button"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
