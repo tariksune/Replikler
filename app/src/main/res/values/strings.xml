@@ -8,10 +8,10 @@
 
 
     <string name="contact_head">bize yazın</string>
-    <string name="contact_form_name">Ad:</string>
-    <string name="contact_form_email">Email:</string>
-    <string name="contact_form_subject">Konu:</string>
-    <string name="contact_form_message">Mesaj:</string>
+    <string name="contact_form_name">İsim</string>
+    <string name="contact_form_email">Mail</string>
+    <string name="contact_form_subject">Konu</string>
+    <string name="contact_form_message">Mesaj</string>
     <string name="contact_form_button">Gönder</string>
     <string name="contact_form_post_message">Lütfen Bekleyin! Mesajınızı ilgili departmana iletiyoruz.</string>
     <string name="contact_posted">Mesajınız başarılı bir şekilde iletildi.</string>

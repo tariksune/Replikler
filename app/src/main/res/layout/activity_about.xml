@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_about"
-                android:fontFamily="@font/poppinsmedium"
+                android:fontFamily="@font/nunitoregular"
                 android:textSize="20sp"
                 android:gravity="center"
                 android:textColor="@color/colorPrimaryDark"/>
@@ -71,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_about_2dn"
-                android:fontFamily="@font/poppinsmedium"
+                android:fontFamily="@font/nunitosemibold"
                 android:textSize="15sp"
                 android:gravity="center"
                 android:textColor="@color/colorPrimaryDark"/>
