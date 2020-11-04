@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.muddzdev.styleabletoast.StyleableToast;
 
@@ -37,12 +40,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
     Context context;
     public static MediaPlayer mediaPlayer = new MediaPlayer();
     private BottomSheetDialog bottomSheetDialog;
+    RequestOptions requestOptions;
 
     public Adapter(Context context,List<Quotes> quotes){
         this.layoutInflater = LayoutInflater.from(context);
         this.quotes = quotes;
         this.context = context;
         this.quotesFilter = quotes;
+
+        requestOptions = new RequestOptions().centerCrop().placeholder(R.drawable.ic_refresh).error(R.drawable.ic_error);
     }
 
 
@@ -175,6 +181,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
             }
         });
 
+        Glide.with(context).load(quotesFilter.get(position).getQuoteImg()).apply(requestOptions).into(holder.quoteImg);
+
     }
 
     @Override
@@ -213,6 +221,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView quoteText,quoteName,quoteLink;
+        ImageView quoteImg;
         RelativeLayout quoteRelativeLayout;
 
         public ViewHolder(@NonNull View itemView){
@@ -221,6 +230,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
             quoteText = itemView.findViewById(R.id.quoteText);
             quoteName = itemView.findViewById(R.id.quoteName);
             quoteLink = itemView.findViewById(R.id.quoteLink);
+            quoteImg = itemView.findViewById(R.id.quoteImg);
             quoteRelativeLayout = itemView.findViewById(R.id.quoteRelativeLayout);
         }
     }

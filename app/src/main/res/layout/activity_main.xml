@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    android:padding="6sp"
+    android:padding="8sp"
     android:background="@color/likeWhite"
     tools:context=".MainActivity">
     <RelativeLayout

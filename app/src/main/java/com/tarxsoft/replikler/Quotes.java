@@ -7,16 +7,18 @@ public class Quotes {
     private String quoteName;
     private String quoteText;
     private String quoteLink;
+    private String quoteImg;
 
     public Quotes(){
 
     }
-    public Quotes(Integer id, String quoteId, String quoteName, String quoteText, String quoteLink){
+    public Quotes(Integer id, String quoteId, String quoteName, String quoteText, String quoteLink, String quoteImg){
         this.id = id;
         this.quoteId = quoteId;
         this.quoteName = quoteName;
         this.quoteText = quoteText;
         this.quoteLink = quoteLink;
+        this.quoteImg = quoteImg;
 
     }
 
@@ -58,5 +60,13 @@ public class Quotes {
 
     public void setQuoteLink(String quoteLink) {
         this.quoteLink = quoteLink;
+    }
+
+    public String getQuoteImg() {
+        return quoteImg;
+    }
+
+    public void setQuoteImg(String quoteImg) {
+        this.quoteImg = quoteImg;
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -7,52 +7,75 @@
     android:layout_height="wrap_content"
     app:cardUseCompatPadding="true"
     app:cardBackgroundColor="@color/white"
+    android:padding="5sp"
+    android:id="@+id/quoteRelativeLayout"
     app:cardCornerRadius="10sp">
+    <RelativeLayout
+        android:id="@+id/cardView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/quoteImg"
+            android:layout_width="75sp"
+            android:layout_height="90sp"
+            android:scaleType="fitCenter"
+            app:riv_corner_radius="8sp"/>
+    </RelativeLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="8sp"
+        android:layout_marginStart="70sp"
+        android:padding="2sp">
 
-        <RelativeLayout
-            android:id="@+id/quoteRelativeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="5sp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="2sp"
+                    android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/quoteText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nunitosemibold"
-                android:text="Drug Name Title"
-                android:textAllCaps="true"
-                android:textColor="#003554"
-                android:textSize="13sp"
-                android:gravity="center"
-                android:lines="3"
-                android:ellipsize="end"
-                android:textStyle="normal" />
+                    <TextView
+                        android:id="@+id/quoteText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunitosemibold"
+                        android:text="Quote Title"
+                        android:textAllCaps="true"
+                        android:textColor="#003554"
+                        android:textSize="13sp"
+                        android:gravity="center"
+                        android:lines="2"
+                        android:ellipsize="end"
+                        android:paddingLeft="2sp"
+                        android:paddingRight="2sp"
+                        android:textStyle="normal" />
 
-            <TextView
-                android:id="@+id/quoteName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/quoteText"
-                android:fontFamily="@font/nunitoextrabold"
-                android:lineSpacingExtra="4sp"
-                android:text="Lorem"
-                android:textColor="@color/colorPrimary"
-                android:textSize="10sp"
-                android:textAllCaps="true"
-                android:gravity="center"
-                android:lines="2"
-                android:ellipsize="end"
-                android:textStyle="normal" />
+                    <TextView
+                        android:id="@+id/quoteName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/nunitoextrabold"
+                        android:gravity="center"
+                        android:lineSpacingExtra="4sp"
+                        android:lines="2"
+                        android:text="Quote Name"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="10sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
 
             <TextView
                 android:id="@+id/quoteLink"
                 android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/quoteName"
-                android:fontFamily="@font/poppinsmedium"/>
+                android:layout_alignBottom="@id/quoteName"/>
+    </androidx.cardview.widget.CardView>
 
-        </RelativeLayout>
-</androidx.cardview.widget.CardView>
+</RelativeLayout>

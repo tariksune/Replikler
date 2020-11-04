@@ -181,6 +181,7 @@ public class MainActivity extends AppCompatActivity{
                         quote.setQuoteId(quoteObject.getString("quoteId"));
                         quote.setQuoteText(quoteObject.getString("quoteText"));
                         quote.setQuoteName(quoteObject.getString("quoteName"));
+                        quote.setQuoteImg(quoteObject.getString("quoteImg"));
                         quote.setQuoteLink(quoteObject.getString("quoteLink"));
                         quotes.add(quote);
                     } catch (JSONException e) {
@@ -189,7 +190,7 @@ public class MainActivity extends AppCompatActivity{
                 }
                 loading.setVisibility(View.INVISIBLE);
                 Collections.reverse(quotes);
-                gridLayoutManager = new GridLayoutManager(getApplicationContext(),3);
+                gridLayoutManager = new GridLayoutManager(getApplicationContext(),1);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(gridLayoutManager);
                 //recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
