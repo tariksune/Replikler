@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/likeWhite"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
     tools:context=".AboutActivity">
     <RelativeLayout
@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppinsmedium"
                     android:text="@string/about_head"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/white"
                     android:textSize="25sp"></TextView>
             </RelativeLayout>
         </LinearLayout>
@@ -44,7 +44,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
-        android:gravity="center"
+        android:gravity="top"
         android:padding="15sp"
         android:layout_weight="0.6">
         <LinearLayout
@@ -52,13 +52,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
+                android:background="@drawable/bordersolid"
+                android:padding="5sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_about"
                 android:fontFamily="@font/nunitoregular"
                 android:textSize="20sp"
                 android:gravity="center"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="@color/white"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,15 +68,17 @@
                 android:fontFamily="@font/poppinsmedium"
                 android:textSize="50sp"
                 android:gravity="center"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="@color/white"/>
             <TextView
+                android:background="@drawable/bordersolid"
+                android:padding="5sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_about_2dn"
                 android:fontFamily="@font/nunitosemibold"
                 android:textSize="15sp"
                 android:gravity="center"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="@color/white"/>
         </LinearLayout>
     </RelativeLayout>
 

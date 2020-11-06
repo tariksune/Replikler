@@ -18,7 +18,7 @@
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/quoteImg"
             android:layout_width="75sp"
-            android:layout_height="90sp"
+            android:layout_height="100sp"
             android:scaleType="fitCenter"
             app:riv_corner_radius="8sp"/>
     </RelativeLayout>
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="8sp"
+        android:layout_marginTop="13sp"
         android:layout_marginStart="70sp"
         android:padding="2sp">
 

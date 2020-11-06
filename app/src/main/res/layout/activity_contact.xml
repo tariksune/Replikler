@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/likeWhite"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
     tools:context=".ContactActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
-        android:layout_weight="0.2">
+        android:layout_weight="0.1">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppinsmedium"
                     android:text="@string/contact_head"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/white"
                     android:textSize="25sp"></TextView>
             </RelativeLayout>
         </LinearLayout>
@@ -43,12 +43,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
-        android:gravity="top"
+        android:gravity="center"
+        android:padding="10sp"
         android:layout_weight="0.65">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20sp"
+            android:background="@drawable/bordersolid"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -59,11 +61,21 @@
                 android:hint="@string/contact_form_name"
                 android:fontFamily="@font/nunitoregular"
                 app:endIconCheckable="true"
-                android:id="@+id/nameContact">
+                android:id="@+id/nameContact"
+                app:placeholderTextColor="@color/white"
+                app:counterTextColor="@color/white"
+                app:counterOverflowTextColor="@color/white"
+                app:boxStrokeColor="@color/white"
+                app:hintTextColor="@color/white"
+                android:textColorHint="@color/white"
+                app:boxStrokeErrorColor="@color/white"
+                app:errorTextColor="@color/white"
+                app:endIconMode="custom"
+                app:endIconTint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,12 +89,20 @@
                 app:endIconCheckable="true"
                 android:id="@+id/emailContact"
                 app:endIconDrawable="@android:drawable/sym_action_email"
+                app:placeholderTextColor="@color/white"
+                app:counterTextColor="@color/white"
+                app:counterOverflowTextColor="@color/white"
+                app:boxStrokeColor="@color/white"
+                app:hintTextColor="@color/white"
+                android:textColorHint="@color/white"
+                app:boxStrokeErrorColor="@color/white"
+                app:errorTextColor="@color/white"
                 app:endIconMode="custom"
-                app:endIconTint="@color/colorPrimaryDark">
+                app:endIconTint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,12 +116,20 @@
                 app:endIconCheckable="true"
                 android:id="@+id/subjectContact"
                 app:endIconDrawable="@android:drawable/stat_notify_chat"
+                app:placeholderTextColor="@color/white"
+                app:counterTextColor="@color/white"
+                app:counterOverflowTextColor="@color/white"
+                app:boxStrokeColor="@color/white"
+                app:hintTextColor="@color/white"
+                android:textColorHint="@color/white"
+                app:boxStrokeErrorColor="@color/white"
+                app:errorTextColor="@color/white"
                 app:endIconMode="custom"
-                app:endIconTint="@color/colorPrimaryDark">
+                app:endIconTint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -113,25 +141,44 @@
                 android:hint="@string/contact_form_message"
                 android:fontFamily="@font/nunitoregular"
                 app:endIconCheckable="true"
-                android:id="@+id/messageContact">
+                android:id="@+id/messageContact"
+                app:placeholderTextColor="@color/white"
+                app:counterTextColor="@color/white"
+                app:counterOverflowTextColor="@color/white"
+                app:boxStrokeColor="@color/white"
+                app:hintTextColor="@color/white"
+                android:textColorHint="@color/white"
+                app:boxStrokeErrorColor="@color/white"
+                app:errorTextColor="@color/white"
+                app:endIconMode="custom"
+                app:endIconTint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"/>
 
             </com.google.android.material.textfield.TextInputLayout>
-
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:gravity="center|top"
+        android:layout_weight="0.1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10sp"
+            android:orientation="vertical">
             <Button
                 android:id="@+id/sendContactButton"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@color/colorPrimary"
                 android:textStyle="bold"
                 android:fontFamily="@font/nunitolight"
                 android:text="@string/contact_form_button"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
                 android:textSize="20sp" />
         </LinearLayout>
     </RelativeLayout>
