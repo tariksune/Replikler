@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/bg_pages"
     android:orientation="vertical"
     tools:context=".AboutActivity">
     <RelativeLayout
@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:gravity="top"
-        android:padding="15sp"
+        android:padding="20sp"
         android:layout_weight="0.6">
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,11 +53,11 @@
             android:orientation="vertical">
             <TextView
                 android:background="@drawable/bordersolid"
-                android:padding="5sp"
+                android:padding="15sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_about"
-                android:fontFamily="@font/nunitoregular"
+                android:fontFamily="@font/poppinsregular"
                 android:textSize="20sp"
                 android:gravity="center"
                 android:textColor="@color/white"/>
@@ -71,11 +71,11 @@
                 android:textColor="@color/white"/>
             <TextView
                 android:background="@drawable/bordersolid"
-                android:padding="5sp"
+                android:padding="15sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_about_2dn"
-                android:fontFamily="@font/nunitosemibold"
+                android:fontFamily="@font/poppinsbold"
                 android:textSize="15sp"
                 android:gravity="center"
                 android:textColor="@color/white"/>

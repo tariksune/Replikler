@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/bg_pages"
     android:orientation="vertical"
     tools:context=".CopyrightActivity">
     <RelativeLayout
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bordersolid"
-            android:padding="10sp"
+            android:padding="20sp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
@@ -60,6 +60,7 @@
                 android:fontFamily="@font/poppinsmedium"
                 android:textSize="20sp"
                 android:gravity="center"
+                android:padding="15sp"
                 android:textColor="@color/white"/>
         </LinearLayout>
     </RelativeLayout>

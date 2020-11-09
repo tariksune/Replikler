@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/bg_pages"
     android:orientation="vertical"
     tools:context=".ContactActivity">
     <RelativeLayout
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="13sp"
                 android:hint="@string/contact_form_name"
-                android:fontFamily="@font/nunitoregular"
+                android:fontFamily="@font/poppinsregular"
                 app:endIconCheckable="true"
                 android:id="@+id/nameContact"
                 app:placeholderTextColor="@color/white"
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="13sp"
                 android:hint="@string/contact_form_email"
-                android:fontFamily="@font/nunitoregular"
+                android:fontFamily="@font/poppinsregular"
                 app:endIconCheckable="true"
                 android:id="@+id/emailContact"
                 app:endIconDrawable="@android:drawable/sym_action_email"
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="13sp"
                 android:hint="@string/contact_form_subject"
-                android:fontFamily="@font/nunitoregular"
+                android:fontFamily="@font/poppinsregular"
                 app:endIconCheckable="true"
                 android:id="@+id/subjectContact"
                 app:endIconDrawable="@android:drawable/stat_notify_chat"
@@ -139,7 +139,7 @@
                 android:layout_height="130sp"
                 android:layout_marginBottom="13sp"
                 android:hint="@string/contact_form_message"
-                android:fontFamily="@font/nunitoregular"
+                android:fontFamily="@font/poppinsregular"
                 app:endIconCheckable="true"
                 android:id="@+id/messageContact"
                 app:placeholderTextColor="@color/white"
@@ -170,16 +170,18 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="10sp"
+            android:background="@color/white"
             android:orientation="vertical">
-            <Button
+            <TextView
                 android:id="@+id/sendContactButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:fontFamily="@font/nunitolight"
-                android:text="@string/contact_form_button"
-                android:textAllCaps="true"
-                android:textSize="20sp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Gönder"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/colorPrimary"
+                />
         </LinearLayout>
     </RelativeLayout>
 

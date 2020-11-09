@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -26,7 +27,7 @@ public class ContactActivity extends AppCompatActivity {
         final TextInputLayout subjectContact     = (TextInputLayout) findViewById(R.id.subjectContact);
         final TextInputLayout messageContact     = (TextInputLayout) findViewById(R.id.messageContact);
 
-        Button sendContactButton = (Button) findViewById(R.id.sendContactButton);
+        TextView sendContactButton = (TextView) findViewById(R.id.sendContactButton);
         sendContactButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

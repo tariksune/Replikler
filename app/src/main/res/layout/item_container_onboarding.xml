@@ -27,7 +27,7 @@
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         android:textStyle="normal"
-        android:fontFamily="@font/nunitobold" />
+        android:fontFamily="@font/poppinsbold" />
 
     <TextView
         android:id="@+id/onboardDescription"
@@ -38,7 +38,7 @@
         android:textColor="@color/black"
         android:paddingTop="7sp"
         android:textSize="16sp"
-        android:fontFamily="@font/nunitolight" />
+        android:fontFamily="@font/poppinslight" />
 
 
 </LinearLayout>
