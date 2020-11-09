@@ -64,7 +64,7 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends AppCompatActivity{
 
     private static final String TAG = "TAG";
-    private static String JSON_URL = "https://www.tariksune.com/replik-list.json";
+    private static String JSON_URL = "https://tariksune.com/repliklist.json";
 
     private AdView adView;
     private PublisherInterstitialAd publisherInterstitialAd;
@@ -106,9 +106,9 @@ public class MainActivity extends AppCompatActivity{
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                StyleableToast.makeText(context,"Güncelleniyor...", Toast.LENGTH_SHORT,R.style.mytoastswipe).show();
                 clearData();
                 listOfQuotes();
-                StyleableToast.makeText(context,"Güncellendi.", Toast.LENGTH_SHORT,R.style.mytoastswipe).show();
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -297,7 +297,7 @@ public class MainActivity extends AppCompatActivity{
         recyclerView.setClipToPadding(false);
 
         publisherInterstitialAd = new PublisherInterstitialAd(this);
-        publisherInterstitialAd.setAdUnitId("/6499/example/interstitial");
+        publisherInterstitialAd.setAdUnitId("ca-app-pub-4414005169063679/6225835721");
         publisherInterstitialAd.loadAd(new PublisherAdRequest.Builder().build());
     }
 

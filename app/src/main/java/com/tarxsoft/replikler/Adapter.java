@@ -48,7 +48,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
         this.context = context;
         this.quotesFilter = quotes;
 
-        requestOptions = new RequestOptions().centerCrop().placeholder(R.drawable.ic_refresh).error(R.drawable.ic_error);
+        requestOptions = new RequestOptions().centerCrop().placeholder(R.drawable.refreshposter).error(R.drawable.hasnotposter);
     }
 
 
