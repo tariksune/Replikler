@@ -20,11 +20,6 @@
                 android:icon="@drawable/ic_contact"
                 />
 
-            <item android:id="@+id/copyright"
-                android:title="Telif Hakkı"
-                android:icon="@drawable/ic_copyright"
-                />
-
             <item android:id="@+id/about"
                 android:title="Hakkında"
                 android:icon="@drawable/ic_about"

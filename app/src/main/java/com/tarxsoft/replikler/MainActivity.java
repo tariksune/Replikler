@@ -241,16 +241,6 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        MenuItem copyright = menu.findItem(R.id.copyright);
-        copyright.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                startActivity(new Intent(getApplicationContext(), CopyrightActivity.class));
-                AdsBetween2Activities();
-                return true;
-            }
-        });
-
         MenuItem about = menu.findItem(R.id.about);
         about.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
