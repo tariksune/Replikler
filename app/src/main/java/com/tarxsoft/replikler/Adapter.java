@@ -252,10 +252,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
         if (c.moveToFirst()) {
             int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
             if (status == DownloadManager.STATUS_FAILED || status == DownloadManager.STATUS_PAUSED) {
-                StyleableToast.makeText(context,"Hay aksi! Lütfen daha sonra tekrar deneyin.",Toast.LENGTH_LONG,R.style.mytoastredtop).show();
+                StyleableToast.makeText(context,"Hay aksi! Lütfen daha sonra tekrar deLütfen daha sonra tekrar denneyin.",Toast.LENGTH_LONG,R.style.mytoastredtop).show();
                 return true;
             } else {
-                StyleableToast.makeText(context,"İndirmeye başlıyor.",Toast.LENGTH_LONG,R.style.mytoastdownloadtop).show();
+                StyleableToast.makeText(context,"İndiriliyor...",Toast.LENGTH_LONG,R.style.mytoastdownloadtop).show();
                 return false;
             }
         }

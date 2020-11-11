@@ -65,7 +65,7 @@ public class OnboardingActivity extends AppCompatActivity {
 
         OnboardingItem shareQuotes = new OnboardingItem();
         shareQuotes.setTitle("Özgürce Paylaş!");
-        shareQuotes.setDescription("Tüm replikleri dilediğin platformda paylaşabilirsin.");
+        shareQuotes.setDescription("Tüm replikleri dilediğin uygulamada paylaşabilirsin.");
         shareQuotes.setImage(R.drawable.share);
 
         OnboardingItem downloadQuotes = new OnboardingItem();
