@@ -20,7 +20,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
@@ -42,11 +41,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
 import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.muddzdev.styleabletoast.StyleableToast;
 import com.onesignal.OneSignal;
 
@@ -64,7 +60,7 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends AppCompatActivity{
 
     private static final String TAG = "TAG";
-    private static String JSON_URL = "https://tariksune.com/repliklist.json";
+    private static String JSON_URL = "https://31x63w8a3dqe6.ngrok.io/api/quotes";
 
     private AdView adView;
     private PublisherInterstitialAd publisherInterstitialAd;
@@ -287,7 +283,7 @@ public class MainActivity extends AppCompatActivity{
         recyclerView.setClipToPadding(false);
 
         publisherInterstitialAd = new PublisherInterstitialAd(this);
-        publisherInterstitialAd.setAdUnitId("ca-app-pub-4414005169063679/6225835721");
+        publisherInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         publisherInterstitialAd.loadAd(new PublisherAdRequest.Builder().build());
     }
 
