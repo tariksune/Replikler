@@ -27,7 +27,7 @@ https://tariksune.com/replik-liste.json
 
 #### screenshot
 ________________
-
+![](https://raw.githubusercontent.com/tariksune/Replikler/master/screenshot.png)
 
 #### #wheretofindme 📍
 ________________
