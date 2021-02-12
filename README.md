@@ -16,6 +16,10 @@ https://github.com/vinc3m1/RoundedImageView
 ```
 https://tariksune.com/replik-liste.json
 ```
+ - Restful CRUD API:
+```
+https://github.com/tariksune/Replikler-SpringBoot
+```
 
 - [x] Splash Screen - dev name
 - [x] RecyclerView - for quotes
